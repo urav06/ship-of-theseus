@@ -1,0 +1,15 @@
+[user]
+	name = Urav
+	email = urav06@gmail.com
+[core]
+	editor = zed --wait
+[pull]
+	rebase = true
+[diff]
+	algorithm = histogram
+[credential "https://github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !/opt/homebrew/bin/gh auth git-credential

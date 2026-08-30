@@ -1,0 +1,30 @@
+# Deny by default. Nothing enters this repo unless explicitly re-included below.
+# Note: git can't re-include a file whose parent directory is excluded, so every
+# directory level must be re-included before the files inside it.
+/**
+
+# Repo root
+!/.gitignore
+!/LICENSE
+!/README.md
+!/.claude/
+!/.claude/settings.json
+
+# home/ — mirror of ~ (home/.config is live: ~/.config symlinks to it)
+!/home/
+!/home/.zshenv
+!/home/.config/
+
+# zsh
+!/home/.config/zsh/
+!/home/.config/zsh/.zprofile
+!/home/.config/zsh/.zshrc
+
+# git
+!/home/.config/git/
+!/home/.config/git/config
+!/home/.config/git/ignore
+
+
+# never track (secret fallback path — gh writes oauth_token here if Keychain is unavailable)
+/home/.config/gh/hosts.yml
