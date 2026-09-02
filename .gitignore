@@ -25,7 +25,7 @@
 !/home/.config/git/config
 !/home/.config/git/ignore
 
-# homebrew (Brewfile.bak stays untracked scratch)
+# homebrew
 !/home/.config/homebrew/
 !/home/.config/homebrew/Brewfile
 
