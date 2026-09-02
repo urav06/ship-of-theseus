@@ -3,6 +3,10 @@
     "deny": [
       "Bash(git clean:*)",
       "Bash(git stash:*)"
+    ],
+    "ask": [
+      "Edit(.gitignore)",
+      "Write(.gitignore)"
     ]
   }
 }
