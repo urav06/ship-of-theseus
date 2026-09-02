@@ -25,6 +25,10 @@
 !/home/.config/git/config
 !/home/.config/git/ignore
 
+# homebrew (Brewfile.bak stays untracked scratch)
+!/home/.config/homebrew/
+!/home/.config/homebrew/Brewfile
+
 
 # never track (secret fallback path — gh writes oauth_token here if Keychain is unavailable)
 /home/.config/gh/hosts.yml

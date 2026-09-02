@@ -1,0 +1,64 @@
+# `brew bundle check` and `brew bundle cleanup` (dry-run; never --force blindly).
+
+# --- Shell spine -------------------------------------------------------------
+# The prompt, completion and navigation layer that makes zsh worth living in.
+brew "starship"                 # prompt
+brew "zsh-autosuggestions"      # history-driven inline suggestions
+brew "zsh-completions"          # extra completion definitions
+brew "zsh-syntax-highlighting"  # as-you-type validity colouring
+brew "fzf"                      # fuzzy selection; also backs fzf-tab
+brew "zoxide"                   # frecency-ranked cd
+
+# --- Modern CLI replacements -------------------------------------------------
+# Drop-in successors to the BSD/GNU defaults, aliased in the shell config.
+brew "bat"                      # cat
+brew "eza"                      # ls
+brew "fd"                       # find
+brew "ripgrep"                  # grep
+
+# --- Git & repo hygiene ------------------------------------------------------
+brew "gh"                       # GitHub CLI; also the git credential helper
+brew "gitleaks"                 # secret scanning; pre-commit hook for this repo
+brew "lefthook"                 # hook manager, used by work repos and here
+
+# --- Language toolchains -----------------------------------------------------
+brew "node"                     # required by tooling, not a chosen dev stack
+brew "go"                       # kept for now, pending review
+brew "cmake"                    # kept for now, pending review
+brew "ninja"                    # kept for now, pending review
+
+# --- Network & security ------------------------------------------------------
+brew "nmap"                     # network swiss-army knife
+brew "cloudflared"              # kept for now, pending review
+
+# --- Device tooling ----------------------------------------------------------
+cask "android-platform-tools"   # adb / fastboot
+
+# --- Node package manager ----------------------------------------------------
+# Slated for removal once pnpm is provisioned via corepack instead.
+npm "pnpm"
+
+# --- Mac App Store -----------------------------------------------------------
+brew "mas"                      # the bridge that makes the lines below work
+mas "Microsoft Excel", id: 462058435
+mas "Numbers", id: 361304891            # ships as "Numbers Creator Studio.app"
+mas "SponsorBlock", id: 1573461917      # Safari extension
+mas "uBlock Origin Lite", id: 6745342698  # Safari extension
+mas "Xcode", id: 497799835              # kept for SDK/tooling, not the IDE; setup review pending
+
+# --- Editor extensions (VS Code) ---------------------------------------------
+# Python
+vscode "ms-python.python"
+vscode "ms-python.vscode-pylance"       # satellite of python ext; listed to keep cleanup quiet
+vscode "ms-python.debugpy"              # satellite
+vscode "ms-python.vscode-python-envs"   # satellite
+vscode "charliermarsh.ruff"
+vscode "astral-sh.ty"
+# Jupyter
+vscode "ms-toolsai.jupyter"
+vscode "ms-toolsai.jupyter-keymap"              # satellite
+vscode "ms-toolsai.jupyter-renderers"           # satellite
+vscode "ms-toolsai.vscode-jupyter-cell-tags"    # satellite
+vscode "ms-toolsai.vscode-jupyter-slideshow"    # satellite
+# Viewers
+vscode "tomoki1207.pdf"
