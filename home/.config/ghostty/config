@@ -1,0 +1,16 @@
+# Font
+font-family = FiraCode Nerd Font
+font-size = 14
+
+# Cursor: block, non-blinking.
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# macOS
+macos-titlebar-style = tabs
+macos-option-as-alt = true
+
+# Quality of life
+mouse-hide-while-typing = true
+window-padding-balance = true

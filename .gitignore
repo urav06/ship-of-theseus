@@ -29,6 +29,17 @@
 !/home/.config/homebrew/
 !/home/.config/homebrew/Brewfile
 
+# ghostty
+!/home/.config/ghostty/
+!/home/.config/ghostty/config
+
+# starship (empty file = all defaults, tracked deliberately)
+!/home/.config/starship.toml
+
+# ripgrep
+!/home/.config/ripgrep/
+!/home/.config/ripgrep/config
+
 
 # never track (secret fallback path — gh writes oauth_token here if Keychain is unavailable)
 /home/.config/gh/hosts.yml
