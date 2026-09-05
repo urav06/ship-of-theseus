@@ -43,10 +43,15 @@ cask "ghostty"                  # terminal
 cask "raycast"                  # launcher
 cask "visual-studio-code"       # editor
 cask "zed"                      # editor
+cask "helium-browser"           # browser
+cask "zen"                      # browser
 cask "bruno"                    # API client
 cask "calibre"                  # ebook library
 cask "iina"                     # video player
 cask "obsidian"                 # notes
+cask "affinity"                 # design suite
+cask "spotify"                  # music
+cask "whatsapp"                 # messaging
 
 # --- Node package manager ----------------------------------------------------
 npm "pnpm"
