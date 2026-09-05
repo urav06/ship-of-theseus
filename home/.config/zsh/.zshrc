@@ -30,6 +30,7 @@ setopt EXTENDED_HISTORY
 
 # -- Plugins -------------------------------------------------------------------
 # Order matters: fzf-tab → autosuggestions → syntax-highlighting.
+# fzf-tab is a git clone of Aloxaf/fzf-tab (no brew formula exists; needs fzf).
 source "$XDG_DATA_HOME/zsh/plugins/fzf-tab/fzf-tab.plugin.zsh"
 source "$HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
 source "$HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
