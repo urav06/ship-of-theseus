@@ -39,6 +39,10 @@ cask "font-fira-code"            # editors
 cask "font-fira-code-nerd-font"  # terminal
 
 # --- Desktop apps ------------------------------------------------------------
+cask "ghostty"                  # terminal
+cask "raycast"                  # launcher
+cask "visual-studio-code"       # editor
+cask "zed"                      # editor
 cask "bruno"                    # API client
 cask "calibre"                  # ebook library
 cask "iina"                     # video player
