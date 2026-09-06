@@ -23,6 +23,8 @@ brew "lefthook"                 # git hooks manager
 
 # --- Language toolchains -----------------------------------------------------
 brew "node"
+brew "pnpm"                     # node package manager
+brew "uv"                       # python toolchain
 brew "go"
 brew "cmake"
 brew "ninja"
@@ -55,9 +57,6 @@ cask "affinity"                 # design suite
 cask "spotify"                  # music
 cask "whatsapp"                 # messaging
 cask "docker-desktop"           # containers
-
-# --- Node package manager ----------------------------------------------------
-npm "pnpm"
 
 # --- Mac App Store -----------------------------------------------------------
 brew "mas"                      # the bridge that makes the lines below work
