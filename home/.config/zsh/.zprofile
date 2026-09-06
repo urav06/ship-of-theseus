@@ -7,8 +7,9 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # ── PATH ──────────────────────────────────────────────────────────────────────
-# ~/.local/bin: uv, uvx, and any user-installed binaries.
+# ~/.local/bin: user-installed binaries outside brew (claude).
 export PATH="$HOME/.local/bin:$PATH"
+typeset -U path  # drop duplicates (path_helper re-adds inherited entries)
 
 # ── XDG runtime ──────────────────────────────────────────────────────────────
 # macOS has no XDG_RUNTIME_DIR. $TMPDIR is per-user, per-session, and
