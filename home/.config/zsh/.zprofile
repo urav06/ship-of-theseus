@@ -16,7 +16,7 @@ typeset -U path  # drop duplicates (path_helper re-adds inherited entries)
 # system-cleaned — the closest macOS equivalent. Lives in .zprofile because
 # it depends on $TMPDIR (set by macOS before login shell) and the mkdir
 # side-effect should only run once per session.
-export XDG_RUNTIME_DIR="${TMPDIR}runtime-$(id -u)"
+export XDG_RUNTIME_DIR="${TMPDIR:-/tmp/}runtime-$(id -u)"
 [ -d "$XDG_RUNTIME_DIR" ] || { mkdir -p "$XDG_RUNTIME_DIR" && chmod 0700 "$XDG_RUNTIME_DIR"; }
 
 ## The End ##

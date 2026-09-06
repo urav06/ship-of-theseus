@@ -32,6 +32,11 @@ export JUPYTER_RUNTIME_DIR="$XDG_STATE_HOME/jupyter"
 # lives here; per-project style via plt.rcParams is more reproducible.
 export MPLCONFIGDIR="$XDG_CACHE_HOME/matplotlib"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
+export GOPATH="$XDG_DATA_HOME/go"
+export GOMODCACHE="$XDG_CACHE_HOME/go/mod"     # module cache is a cache, not data
+export ANDROID_USER_HOME="$XDG_DATA_HOME/android"
+export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"  # honoured by Python 3.13+
 
 # ── Python ───────────────────────────────────────────────────────────────────
 # Stops venv's activate script from mutating PS1. Starship already detects
