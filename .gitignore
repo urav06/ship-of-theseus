@@ -26,6 +26,21 @@
 !/home/.config/git/config
 !/home/.config/git/ignore
 
+# gh (hosts.yml stays excluded, see bottom)
+!/home/.config/gh/
+!/home/.config/gh/config.yml
+
+# zed
+!/home/.config/zed/
+!/home/.config/zed/settings.json
+
+# vscode (copy lane: ~/Library/Application Support/Code/User/settings.json)
+!/home/Library/
+!/home/Library/Application Support/
+!/home/Library/Application Support/Code/
+!/home/Library/Application Support/Code/User/
+!/home/Library/Application Support/Code/User/settings.json
+
 # homebrew
 !/home/.config/homebrew/
 !/home/.config/homebrew/Brewfile

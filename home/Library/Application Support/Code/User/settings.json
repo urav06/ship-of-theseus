@@ -1,0 +1,30 @@
+{
+    // ── Editor ──────────────────────────────────────────────────────
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+
+    "window.autoDetectColorScheme": true,
+    "workbench.startupEditor": "none",
+
+    // ── Python ──────────────────────────────────────────────────────
+    //  Pylance  → completions, hover, go-to-def, semantic highlighting
+    //  ty       → type checking diagnostics (language services off)
+    //  Ruff     → lint diagnostics + manual formatting (Cmd+Shift+P)
+    //
+    //  When ty ships stable LSP (track: github.com/astral-sh/ty/issues/791):
+    //    - set python.languageServer to "None"
+    //    - remove ty.disableLanguageServices
+    //    - uninstall Pylance
+    "python.languageServer": "Pylance",
+    "python.analysis.inlayHints.callArgumentNames": "partial",
+    "ty.disableLanguageServices": true,
+
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+
+    // ── Jupyter ─────────────────────────────────────────────────────
+    "jupyter.askForKernelRestart": false,
+    "git.confirmSync": false,
+    "python.defaultInterpreterPath": "/Users/urav/code/content-optimizer/.venv"
+}
