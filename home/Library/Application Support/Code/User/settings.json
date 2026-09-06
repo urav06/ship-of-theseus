@@ -1,30 +1,42 @@
 {
-    // ── Editor ──────────────────────────────────────────────────────
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
+    // Deviations from stock VS Code only. A default that moves is pinned
+    // back here the day it moves, not in advance.
 
-    "window.autoDetectColorScheme": true,
+    // ── Workbench ────────────────────────────────────────────────
     "workbench.startupEditor": "none",
 
-    // ── Python ──────────────────────────────────────────────────────
-    //  Pylance  → completions, hover, go-to-def, semantic highlighting
-    //  ty       → type checking diagnostics (language services off)
-    //  Ruff     → lint diagnostics + manual formatting (Cmd+Shift+P)
-    //
-    //  When ty ships stable LSP (track: github.com/astral-sh/ty/issues/791):
-    //    - set python.languageServer to "None"
-    //    - remove ty.disableLanguageServices
-    //    - uninstall Pylance
-    "python.languageServer": "Pylance",
-    "python.analysis.inlayHints.callArgumentNames": "partial",
-    "ty.disableLanguageServices": true,
+    // ── Editor ───────────────────────────────────────────────────
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.minimap.enabled": false,
+    "editor.cursorBlinking": "solid",
+    "editor.cursorSmoothCaretAnimation": "on",
+    "editor.smoothScrolling": true,
+    "editor.formatOnSave": true,
 
+    // ── Files ────────────────────────────────────────────────────
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+
+    // ── Terminal ─────────────────────────────────────────────────
+    // Nerd Font so starship and eza glyphs render. Ghostty uses the same face.
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+    "terminal.integrated.smoothScrolling": true,
+    "terminal.integrated.scrollback": 10000,
+
+    // ── Git ──────────────────────────────────────────────────────
+    "git.autofetch": true,
+
+    // ── Python ───────────────────────────────────────────────────
+    // ty is the language server (its extension sets python.languageServer
+    // to None). Ruff formats. ty is beta; watch the Stable milestone:
+    // github.com/astral-sh/ty/milestone/4
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff"
     },
 
-    // ── Jupyter ─────────────────────────────────────────────────────
-    "jupyter.askForKernelRestart": false,
-    "git.confirmSync": false,
-    "python.defaultInterpreterPath": "/Users/urav/code/content-optimizer/.venv"
+    // ── Privacy ──────────────────────────────────────────────────
+    "telemetry.telemetryLevel": "off",
+    "chat.disableAIFeatures": true
 }
