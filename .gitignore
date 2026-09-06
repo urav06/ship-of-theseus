@@ -16,6 +16,12 @@
 !/home/.zshenv
 !/home/.config/
 
+# claude code (copy lane: the rest of ~/.claude is session state)
+!/home/.claude/
+!/home/.claude/CLAUDE.md
+!/home/.claude/settings.json
+!/home/.claude/statusline.sh
+
 # zsh
 !/home/.config/zsh/
 !/home/.config/zsh/.zprofile
