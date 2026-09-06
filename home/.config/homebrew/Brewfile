@@ -41,6 +41,7 @@ cask "font-fira-code-nerd-font"  # terminal
 
 # --- Desktop apps ------------------------------------------------------------
 cask "ghostty"                  # terminal
+cask "claude"                   # Claude desktop
 cask "raycast"                  # launcher
 cask "visual-studio-code"       # editor
 cask "zed"                      # editor
@@ -84,3 +85,7 @@ vscode "ms-toolsai.vscode-jupyter-cell-tags"
 vscode "ms-toolsai.vscode-jupyter-slideshow"
 # Viewers
 vscode "tomoki1207.pdf"
+
+# --- Not brew-managed --------------------------------------------------------
+# Claude Code: native installer (self-updating), ~/.local/bin/claude
+# Safari web apps (Add to Dock): Discord, Notion, Slack, YouTube
