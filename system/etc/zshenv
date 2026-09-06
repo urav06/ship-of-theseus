@@ -1,0 +1,3 @@
+# Read by every zsh before any user file. Apple ships no /etc/zshenv, so this
+# survives macOS updates. Its only job is to point zsh at the XDG config dir.
+[[ -d "$HOME/.config/zsh" ]] && export ZDOTDIR="$HOME/.config/zsh"

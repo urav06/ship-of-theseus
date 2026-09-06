@@ -7,9 +7,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # ── Zsh ───────────────────────────────────────────────────────────────────────
-# Bootstrap: tells zsh where to find all other dotfiles (~/.config/zsh/).
-# Must live here — it's the only file zsh reads before knowing ZDOTDIR.
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+# ZDOTDIR is set in /etc/zshenv (mirrored at system/etc/zshenv); that is what
+# brings zsh to this directory in the first place.
 
 # ── macOS ─────────────────────────────────────────────────────────────────────
 # Prevents .zsh_sessions/ from being written to ~.
