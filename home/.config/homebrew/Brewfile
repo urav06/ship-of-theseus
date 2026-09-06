@@ -33,6 +33,7 @@ brew "cloudflared"
 
 # --- Device tooling ----------------------------------------------------------
 cask "android-platform-tools"   # adb / fastboot
+cask "displaylink"              # DisplayLink dock driver
 
 # --- Fonts -------------------------------------------------------------------
 cask "font-fira-code"            # editors
@@ -52,6 +53,7 @@ cask "obsidian"                 # notes
 cask "affinity"                 # design suite
 cask "spotify"                  # music
 cask "whatsapp"                 # messaging
+cask "docker-desktop"           # containers
 
 # --- Node package manager ----------------------------------------------------
 npm "pnpm"
