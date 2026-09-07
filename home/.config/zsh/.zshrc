@@ -72,14 +72,15 @@ _auto_venv() {
 }
 
 # -- Directory tinting ---------------------------------------------------------
-# Subtly shifts Ghostty's background via OSC 11 based on project root.
-# Gives each workspace a distinct feel so tabs are visually distinguishable,
-# even while a full-screen TUI (Claude Code, etc.) is running.
+# Shifts the terminal background via OSC 11 by project root, so tabs are
+# distinguishable even while a full-screen TUI is running. Ghostty only, and
+# only when stdout is a terminal, so captured shells never see the escape.
 _auto_tint() {
+  [[ -t 1 && "$TERM_PROGRAM" == "ghostty" ]] || return 0
   case "$PWD" in
-    $HOME/code|$HOME/code/*)         printf '\e]11;#20252f\e\\' ;;  # deep steel — code
-    $HOME/Projects|$HOME/Projects/*) printf '\e]11;#292733\e\\' ;;  # muted violet — projects
-    *)                               printf '\e]11;#282c34\e\\' ;;  # default
+    $HOME/code|$HOME/code/*)         printf '\e]11;#20252f\e\\' ;;  # deep steel: code
+    $HOME/Projects|$HOME/Projects/*) printf '\e]11;#292733\e\\' ;;  # muted violet: projects
+    *)                               printf '\e]111\e\\' ;;         # reset to the theme's background
   esac
 }
 
