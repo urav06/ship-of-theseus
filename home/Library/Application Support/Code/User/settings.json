@@ -1,42 +1,45 @@
 {
-    // Deviations from stock VS Code only. A default that moves is pinned
-    // back here the day it moves, not in advance.
+    // -- Privacy: no data leaves the machine --------------------------------
+    "telemetry.telemetryLevel":                         "off", // also disables experiments and the crash reporter
+    "workbench.settings.enableNaturalLanguageSearch":   false, // settings searches stay local
+    "markdown.experimental.richLinks.enabled":          false, // preview links stop calling GitHub
 
-    // ── Workbench ────────────────────────────────────────────────
-    "workbench.startupEditor": "none",
+    // -- Debloat: features pushed for the vendor's benefit, not the user's --
+    "chat.disableAIFeatures":                           true,       // built-in Copilot chat and agent surfaces
+    "workbench.secondarySideBar.defaultVisibility":     "hidden",   // the chat sidebar stops opening on its own
+    "workbench.startupEditor":                          "none",     // no Welcome page
+    "workbench.welcomePage.walkthroughs.openOnInstall": false,      // no walkthrough tab after installing an extension
+    "extensions.ignoreRecommendations":                 true,       // no "install this extension" prompts
+    "telemetry.feedback.enabled":                       false,      // no survey and feedback prompts
+    "github.gitAuthentication":                         false,      // no GitHub sign-in prompts
+    "update.mode":                                      "none",     // brew is the only updater
+    "update.showReleaseNotes":                          false,
 
-    // ── Editor ───────────────────────────────────────────────────
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
-    "editor.minimap.enabled": false,
-    "editor.cursorBlinking": "solid",
-    "editor.cursorSmoothCaretAnimation": "on",
-    "editor.smoothScrolling": true,
-    "editor.formatOnSave": true,
+    // -- Consistency: match the rest of this machine -------------------------
+    "editor.fontFamily":                                "Fira Code",
+    "editor.fontLigatures":                             true,
+    "editor.fontSize":                                  14,
+    "terminal.integrated.fontFamily":                   "FiraCode Nerd Font",
+    "terminal.integrated.fontSize":                     14,
+    "editor.cursorBlinking":                            "solid",
+    "window.titleBarStyle":                             "native",               // Native macOS title bar.
+    "window.customTitleBarVisibility":                  "never",                // Applicable for fully Native macOS title bar
+    "terminal.integrated.macOptionIsMeta":              true, // Option sends Meta, as in Ghostty
+    "search.smartCase":                                 true, // case-insensitive until the pattern has a capital, as in the ripgrep config
 
-    // ── Files ────────────────────────────────────────────────────
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
+    // -- Hygiene: files leave the editor clean --------------------------------
+    "files.trimTrailingWhitespace":                     true,
+    "files.insertFinalNewline":                         true,
+    "files.trimFinalNewlines":                          true,
 
-    // ── Terminal ─────────────────────────────────────────────────
-    // Nerd Font so starship and eza glyphs render. Ghostty uses the same face.
-    "terminal.integrated.fontFamily": "FiraCode Nerd Font",
-    "terminal.integrated.smoothScrolling": true,
-    "terminal.integrated.scrollback": 10000,
+    // -- Quiet: less on screen ------------------------------------------------
+    "editor.minimap.enabled":                           false,
+    "workbench.tips.enabled":                           false, // no shortcut cheatsheet in empty windows
 
-    // ── Git ──────────────────────────────────────────────────────
-    "git.autofetch": true,
-
-    // ── Python ───────────────────────────────────────────────────
-    // ty is the language server (its extension sets python.languageServer
-    // to None). Ruff formats. ty is beta; watch the Stable milestone:
-    // github.com/astral-sh/ty/milestone/4
-    "[python]": {
-        "editor.defaultFormatter": "charliermarsh.ruff"
-    },
-
-    // ── Privacy ──────────────────────────────────────────────────
-    "telemetry.telemetryLevel": "off",
-    "chat.disableAIFeatures": true
+    // -- Feel: motion and reach ------------------------------------------------
+    "editor.cursorSmoothCaretAnimation":                "on",
+    "editor.smoothScrolling":                           true,
+    "terminal.integrated.smoothScrolling":              true,
+    "terminal.integrated.scrollback":                   10000,
+    "git.autofetch":                                    true, // polls the remote so ahead/behind counts stay current
 }
