@@ -7,8 +7,8 @@ export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 # ── Zsh ───────────────────────────────────────────────────────────────────────
-# ZDOTDIR is set in /etc/zshenv (mirrored at system/etc/zshenv); that is what
-# brings zsh to this directory in the first place.
+# ZDOTDIR is set in ~/.zshenv (mirrored at home/.zshenv); that is what brings
+# zsh to this directory in the first place.
 
 # ── macOS ─────────────────────────────────────────────────────────────────────
 # Prevents .zsh_sessions/ from being written to ~.
