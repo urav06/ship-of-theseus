@@ -38,7 +38,6 @@
     // -- Quiet: less on screen ------------------------------------------------
     "editor.minimap.enabled":                           false,
     "workbench.tips.enabled":                           false, // no shortcut cheatsheet in empty windows
-    "workbench.activityBar.location": "top",
 
     // -- Feel: motion and reach ------------------------------------------------
     "editor.cursorSmoothCaretAnimation":                "on",
