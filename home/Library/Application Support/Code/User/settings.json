@@ -7,7 +7,7 @@
     // -- Debloat: features pushed for the vendor's benefit, not the user's --
     "chat.disableAIFeatures":                           true,       // built-in Copilot chat and agent surfaces
     "workbench.secondarySideBar.defaultVisibility":     "hidden",   // the chat sidebar stops opening on its own
-    "workbench.startupEditor":                          "none",     // no Welcome page
+    "workbench.startupEditor":                          "none",     // empty windows open empty
     "workbench.welcomePage.walkthroughs.openOnInstall": false,      // no walkthrough tab after installing an extension
     "extensions.ignoreRecommendations":                 true,       // no "install this extension" prompts
     "telemetry.feedback.enabled":                       false,      // no survey and feedback prompts
@@ -22,8 +22,7 @@
     "terminal.integrated.fontFamily":                   "FiraCode Nerd Font",
     "terminal.integrated.fontSize":                     14,
     "editor.cursorBlinking":                            "solid",
-    "window.titleBarStyle":                             "native",               // Native macOS title bar.
-    "window.customTitleBarVisibility":                  "never",                // Applicable for fully Native macOS title bar
+    "window.titleBarStyle": "native", // Applicable for fully Native macOS title bar
     "terminal.integrated.macOptionIsMeta":              true, // Option sends Meta, as in Ghostty
     "search.smartCase":                                 true, // case-insensitive until the pattern has a capital, as in the ripgrep config
 
@@ -31,15 +30,26 @@
     "files.trimTrailingWhitespace":                     true,
     "files.insertFinalNewline":                         true,
     "files.trimFinalNewlines":                          true,
+    // Two trailing spaces are a hard line break in Markdown; keep them there.
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false
+    },
 
     // -- Quiet: less on screen ------------------------------------------------
     "editor.minimap.enabled":                           false,
     "workbench.tips.enabled":                           false, // no shortcut cheatsheet in empty windows
+    "workbench.activityBar.location": "top",
 
     // -- Feel: motion and reach ------------------------------------------------
     "editor.cursorSmoothCaretAnimation":                "on",
+    "editor.acceptSuggestionOnEnter":                   "off", // Tab accepts completions, Enter is always a newline
     "editor.smoothScrolling":                           true,
     "terminal.integrated.smoothScrolling":              true,
     "terminal.integrated.scrollback":                   10000,
     "git.autofetch":                                    true, // polls the remote so ahead/behind counts stay current
+    "git.blame.editorDecoration.enabled":               true, // last commit author and age at the end of the current line
+    "git.blame.editorDecoration.template":              "${authorName}, ${authorDateAgo}", // the subject stays in the hover
+    "workbench.colorCustomizations": {
+        "git.blame.editorDecorationForeground": "#ffffff30" // white at low alpha, so it stays faint on any dark theme
+    },
 }
