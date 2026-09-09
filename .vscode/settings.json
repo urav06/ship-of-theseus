@@ -1,0 +1,39 @@
+{
+    // Every file is read-only except the ones listed under readonlyExclude.
+    // Untracked files here are live app state, owned by the app, not for hand edits.
+    // When adopting a file: re-include it in .gitignore, then list it below.
+    "files.readonlyInclude": {
+        "**": true
+    },
+    "files.readonlyExclude": {
+        // untracked by design, edited by hand
+        "AGENTS.md": true,
+        "CLAUDE.md": true,
+        "CONTEXT.md": true,
+        "docs/**": true,
+        // tracked
+        ".claude/settings.json": true,
+        ".vscode/settings.json": true,
+        ".gitignore": true,
+        "LICENSE": true,
+        "README.md": true,
+        "home/.claude/CLAUDE.md": true,
+        "home/.claude/settings.json": true,
+        "home/.claude/statusline.sh": true,
+        "home/.config/gh/config.yml": true,
+        "home/.config/ghostty/config": true,
+        "home/.config/git/config": true,
+        "home/.config/git/ignore": true,
+        "home/.config/homebrew/Brewfile": true,
+        "home/.config/ripgrep/config": true,
+        "home/.config/starship.toml": true,
+        "home/.config/zed/settings.json": true,
+        "home/.config/zsh/.zprofile": true,
+        "home/.config/zsh/.zshenv": true,
+        "home/.config/zsh/.zshrc": true,
+        "home/.zshenv": true,
+        "home/Library/Application Support/Code/User/settings.json": true,
+        "lefthook.yml": true,
+        "system/etc/pam.d/sudo_local": true
+    }
+}
