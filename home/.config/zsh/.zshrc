@@ -61,16 +61,6 @@ alias tree="eza --tree --icons=auto"
 alias cat="bat"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
-# -- Venv auto-activate --------------------------------------------------------
-# Activates .venv on cd, deactivates on leave. Works with zoxide.
-_auto_venv() {
-  if [[ -f .venv/bin/activate ]]; then
-    [[ "$VIRTUAL_ENV" != "$PWD/.venv" ]] && source .venv/bin/activate
-  elif [[ -n "$VIRTUAL_ENV" ]]; then
-    deactivate
-  fi
-}
-
 # -- Directory tinting ---------------------------------------------------------
 # Shifts the terminal background via OSC 11 by project root, so tabs are
 # distinguishable even while a full-screen TUI is running. Ghostty only, and
@@ -86,9 +76,7 @@ _auto_tint() {
 
 # -- chpwd hooks ---------------------------------------------------------------
 autoload -Uz add-zsh-hook
-add-zsh-hook chpwd _auto_venv
 add-zsh-hook chpwd _auto_tint
-_auto_venv  # run once for the starting directory
 _auto_tint
 
 # -- Starship ------------------------------------------------------------------

@@ -24,7 +24,6 @@ brew "lefthook"                 # git hooks manager
 # --- Language toolchains -----------------------------------------------------
 brew "node"
 brew "pnpm"                     # node package manager
-brew "uv"                       # python toolchain
 brew "go"
 brew "cmake"
 brew "ninja"
@@ -66,8 +65,23 @@ mas "SponsorBlock", id: 1573461917      # Safari extension
 mas "uBlock Origin Lite", id: 6745342698  # Safari extension
 mas "Xcode", id: 497799835
 
+# --- Python ------------------------------------------------------------------
+# uv owns interpreters, venvs, and packages. In the editor: the Python extension
+# for debugging, tests, and environments, Ruff for lint and format, ty as the
+# language server. Pylance comes with the Python extension and is uninstalled.
+brew "uv"
+vscode "ms-python.python"
+vscode "ms-python.debugpy"
+vscode "ms-python.vscode-python-envs"
+vscode "charliermarsh.ruff"
+vscode "astral-sh.ty"
+
 # --- Editor extensions (VS Code) ---------------------------------------------
 vscode "anthropic.claude-code"
+# File formats
+vscode "tomoki1207.pdf"
+vscode "redhat.vscode-yaml"
+vscode "mechatroner.rainbow-csv"
 
 # --- Not brew-managed --------------------------------------------------------
 # Claude Code: native installer (self-updating), ~/.local/bin/claude

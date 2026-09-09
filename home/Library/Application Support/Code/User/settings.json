@@ -3,6 +3,8 @@
     "telemetry.telemetryLevel":                         "off",                 // also disables experiments and the crash reporter
     "workbench.settings.enableNaturalLanguageSearch":   false,                 // settings searches stay local
     "markdown.experimental.richLinks.enabled":          false,                 // preview links stop calling GitHub
+    "redhat.telemetry.enabled":                         false,                 // the YAML extension asks otherwise on first use
+    "python.experiments.enabled":                       false,                 // no A/B experiments from the Python extension
 
     // -- Debloat: features pushed for the vendor's benefit, not the user's ---------
     "chat.disableAIFeatures":                           true,                  // built-in Copilot chat and agent surfaces
@@ -14,6 +16,9 @@
     "github.gitAuthentication":                         false,                 // no GitHub sign-in prompts; gh is the credential helper
     "update.mode":                                      "none",                // brew is the only updater
     "update.showReleaseNotes":                          false,
+    "extensions.autoUpdate":                            "off",                 // extensions update only when asked, like VS Code itself
+    "yaml.extension.recommendations":                   false,                 // the YAML extension stops suggesting other extensions
+    "python.createEnvironment.trigger":                 "off",                 // no "create an environment" prompt; uv does that
 
     // -- Consistency: match the rest of this machine -------------------------------
     "editor.fontFamily":                                "Fira Code",
@@ -35,6 +40,14 @@
     // Two trailing spaces are a hard line break in Markdown; keep them there.
     "[markdown]": {
         "files.trimTrailingWhitespace": false
+    },
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        }
     },
 
     // -- Quiet: less on screen -----------------------------------------------------
