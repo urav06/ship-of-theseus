@@ -66,6 +66,9 @@ mas "SponsorBlock", id: 1573461917      # Safari extension
 mas "uBlock Origin Lite", id: 6745342698  # Safari extension
 mas "Xcode", id: 497799835
 
+# --- Editor extensions (VS Code) ---------------------------------------------
+vscode "anthropic.claude-code"
+
 # --- Not brew-managed --------------------------------------------------------
 # Claude Code: native installer (self-updating), ~/.local/bin/claude
 # Safari web apps (Add to Dock): Discord, Notion, Slack, YouTube

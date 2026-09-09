@@ -1,32 +1,34 @@
 {
-    // -- Privacy: no data leaves the machine --------------------------------
-    "telemetry.telemetryLevel":                         "off", // also disables experiments and the crash reporter
-    "workbench.settings.enableNaturalLanguageSearch":   false, // settings searches stay local
-    "markdown.experimental.richLinks.enabled":          false, // preview links stop calling GitHub
+    // -- Privacy: no data leaves the machine ---------------------------------------
+    "telemetry.telemetryLevel":                         "off",                 // also disables experiments and the crash reporter
+    "workbench.settings.enableNaturalLanguageSearch":   false,                 // settings searches stay local
+    "markdown.experimental.richLinks.enabled":          false,                 // preview links stop calling GitHub
 
-    // -- Debloat: features pushed for the vendor's benefit, not the user's --
-    "chat.disableAIFeatures":                           true,       // built-in Copilot chat and agent surfaces
-    "workbench.secondarySideBar.defaultVisibility":     "hidden",   // the chat sidebar stops opening on its own
-    "workbench.startupEditor":                          "none",     // empty windows open empty
-    "workbench.welcomePage.walkthroughs.openOnInstall": false,      // no walkthrough tab after installing an extension
-    "extensions.ignoreRecommendations":                 true,       // no "install this extension" prompts
-    "telemetry.feedback.enabled":                       false,      // no survey and feedback prompts
-    "github.gitAuthentication":                         false,      // no GitHub sign-in prompts
-    "update.mode":                                      "none",     // brew is the only updater
+    // -- Debloat: features pushed for the vendor's benefit, not the user's ---------
+    "chat.disableAIFeatures":                           true,                  // built-in Copilot chat and agent surfaces
+    "workbench.secondarySideBar.defaultVisibility":     "hidden",              // the chat sidebar stops opening on its own
+    "workbench.startupEditor":                          "none",                // empty windows open empty
+    "workbench.welcomePage.walkthroughs.openOnInstall": false,                 // no walkthrough tab after installing an extension
+    "extensions.ignoreRecommendations":                 true,                  // no "install this extension" prompts
+    "telemetry.feedback.enabled":                       false,                 // no survey and feedback prompts
+    "github.gitAuthentication":                         false,                 // no GitHub sign-in prompts; gh is the credential helper
+    "update.mode":                                      "none",                // brew is the only updater
     "update.showReleaseNotes":                          false,
 
-    // -- Consistency: match the rest of this machine -------------------------
+    // -- Consistency: match the rest of this machine -------------------------------
     "editor.fontFamily":                                "Fira Code",
     "editor.fontLigatures":                             true,
     "editor.fontSize":                                  14,
     "terminal.integrated.fontFamily":                   "FiraCode Nerd Font",
     "terminal.integrated.fontSize":                     14,
     "editor.cursorBlinking":                            "solid",
-    "window.titleBarStyle": "native", // Applicable for fully Native macOS title bar
-    "terminal.integrated.macOptionIsMeta":              true, // Option sends Meta, as in Ghostty
-    "search.smartCase":                                 true, // case-insensitive until the pattern has a capital, as in the ripgrep config
+    "terminal.integrated.macOptionIsMeta":              true,                  // Option sends Meta, as in Ghostty
+    "search.smartCase":                                 true,                  // case-insensitive until the pattern has a capital, as in ripgrep
+    // Native macOS title bar. "never" removes the row VS Code otherwise draws under it.
+    "window.titleBarStyle":                             "native",
+    "window.customTitleBarVisibility":                  "never",
 
-    // -- Hygiene: files leave the editor clean --------------------------------
+    // -- Hygiene: files leave the editor clean -------------------------------------
     "files.trimTrailingWhitespace":                     true,
     "files.insertFinalNewline":                         true,
     "files.trimFinalNewlines":                          true,
@@ -35,18 +37,19 @@
         "files.trimTrailingWhitespace": false
     },
 
-    // -- Quiet: less on screen ------------------------------------------------
+    // -- Quiet: less on screen -----------------------------------------------------
     "editor.minimap.enabled":                           false,
-    "workbench.tips.enabled":                           false, // no shortcut cheatsheet in empty windows
+    "workbench.tips.enabled":                           false,                 // no shortcut cheatsheet in empty windows
 
-    // -- Feel: motion and reach ------------------------------------------------
+    // -- Feel: motion and reach ----------------------------------------------------
     "editor.cursorSmoothCaretAnimation":                "on",
-    "editor.acceptSuggestionOnEnter":                   "off", // Tab accepts completions, Enter is always a newline
     "editor.smoothScrolling":                           true,
+    "editor.acceptSuggestionOnEnter":                   "off",                 // Tab accepts completions, Enter is always a newline
+    "files.autoSave":                                   "onFocusChange",       // saves when you switch away; save-time hygiene still runs, unlike afterDelay
     "terminal.integrated.smoothScrolling":              true,
     "terminal.integrated.scrollback":                   10000,
-    "git.autofetch":                                    true, // polls the remote so ahead/behind counts stay current
-    "git.blame.editorDecoration.enabled":               true, // last commit author and age at the end of the current line
+    "git.autofetch":                                    true,                  // polls the remote so ahead/behind counts stay current
+    "git.blame.editorDecoration.enabled":               true,                  // last commit author and age at the end of the current line
     "git.blame.editorDecoration.template":              "${authorName}, ${authorDateAgo}", // the subject stays in the hover
     "workbench.colorCustomizations": {
         "git.blame.editorDecorationForeground": "#ffffff30" // white at low alpha, so it stays faint on any dark theme
