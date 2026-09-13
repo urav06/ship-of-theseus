@@ -30,6 +30,10 @@
 !/home/.claude/settings.json
 !/home/.claude/statusline.sh
 !/home/.claude/keybindings.json
+!/home/.claude/skills/
+!/home/.claude/skills/system-prompt/
+!/home/.claude/skills/system-prompt/SKILL.md
+!/home/.claude/skills/system-prompt/capture.py
 
 # zsh
 !/home/.config/zsh/

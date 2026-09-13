@@ -5,8 +5,7 @@
       "Bash(git stash:*)"
     ],
     "ask": [
-      "Edit(.gitignore)",
-      "Write(.gitignore)"
+      "Edit(.gitignore)"
     ]
   }
 }
