@@ -29,6 +29,7 @@
 !/home/.claude/CLAUDE.md
 !/home/.claude/settings.json
 !/home/.claude/statusline.sh
+!/home/.claude/keybindings.json
 
 # zsh
 !/home/.config/zsh/

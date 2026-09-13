@@ -14,3 +14,8 @@ macos-option-as-alt = true
 # Quality of life
 mouse-hide-while-typing = true
 window-padding-balance = true
+# Keybinds
+# Window management belongs to Raycast and macOS, not the app.
+keybind = super+enter=unbind
+# Cmd+Z reopens a just-closed tab for undo-timeout (5s); otherwise it passes through to the app inside.
+keybind = performable:super+z=undo
