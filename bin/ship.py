@@ -3,26 +3,25 @@
 # requires-python = ">=3.14"
 # dependencies = []
 # ///
-"""ship: a drift check for this repo's copy lane, plus a capture of Claude Code's system prompt.
+"""ship: a drift check for the copy lane, and a capture of Claude Code's system prompt.
 
-The mirror `home/` maps onto `~` and `system/` onto `/`. A directory the machine
-reads through a symlink (`~/.config`) is live and needs no copying. Every other
-tracked file under the mirrors is the copy lane: the repo holds a copy, and the
-two sides drift apart unless someone notices.
+`home/` mirrors `~`. `system/` mirrors `/`. The machine reads `~/.config` through a
+symlink, so the files under it are live and need no copy. Every other tracked file
+under a mirror is a copy. The repo holds one version and the machine holds another.
+Any difference between the two is drift.
 
-    ship.py check [PATH ...]   compare the index copy of each copy-lane file with its live
-                               path; for every difference print the `cp` that resolves it
-    ship.py capture            record the request Claude Code sends and refresh the local
-                               `default` agent under .claude/agents/
+    ship.py check [PATH ...]   Compare the index copy of each copy-lane file with the
+                               live file. Print the `cp` that ends each difference.
+    ship.py capture            Record the request that Claude Code sends. Write the
+                               main system block to .claude/agents/default.local.md.
 
-PATH arguments are repo paths; a directory selects everything tracked beneath it.
-The manifest is git's index (`git ls-files` under home/ and system/); there is no
-list to maintain, and reconciling is always a plain `cp` you run yourself. `check`
-exists so a commit never records a state the machine does not run; lefthook runs
-it on staged files.
+A PATH is a repo path. A directory selects every tracked file below it. The list of
+copy-lane files is git's index, read with `git ls-files`. Nothing here copies a file.
+You run the `cp` yourself. lefthook runs `check` on staged files, so a commit cannot
+record a copy that the machine does not run.
 
-uv resolves the interpreter from the inline metadata above. On a machine with no
-Python that satisfies it, `uv run` downloads one, which is a network action.
+uv reads the inline metadata above and picks the interpreter. If no installed Python
+satisfies it, `uv run` downloads one over the network.
 """
 
 from __future__ import annotations
@@ -50,7 +49,7 @@ MIRRORS = {"home": Path.home(), "system": Path("/")}
 
 
 def git(*args: str) -> bytes:
-    """Run git at the repo root and return its stdout; git's own errors reach the terminal."""
+    """Run git at the repo root and return its stdout. Git prints its own errors to the terminal."""
     return subprocess.run(
         ["git", "-C", str(ROOT), *args], check=True, stdout=subprocess.PIPE
     ).stdout
@@ -90,13 +89,13 @@ def manifest() -> list[Entry]:
         live = MIRRORS[top] / rest
         entry = Entry(rel, mode, live)
         if live.exists() and live.resolve() == entry.repo.resolve():
-            continue  # reached through a symlink: live, nothing to copy
+            continue  # the machine reads this file through a symlink, so it is live
         entries.append(entry)
     return entries
 
 
 def select_entries(paths: list[str]) -> list[Entry]:
-    """Filter the manifest to the given repo paths (files or directories), or return all of it."""
+    """Keep the entries under the given repo paths. With no paths, keep every entry."""
     entries = manifest()
     if not paths:
         return entries
@@ -143,14 +142,14 @@ def show_diff(label_a: str, a: bytes, label_b: str, b: bytes) -> None:
 
 
 def resolutions(entry: Entry) -> str:
-    """The two plain commands that end the drift: repo wins, or machine wins."""
+    """The two plain commands that end the drift. One makes the repo win, one the machine."""
     repo, live = shlex.quote(str(entry.repo)), shlex.quote(str(entry.live))
     sudo = "sudo " if entry.rel.startswith("system/") else ""
     return f"  repo wins:    {sudo}cp {repo} {live}\n  machine wins: cp {live} {repo}"
 
 
 def check(paths: list[str]) -> int:
-    """Exit 1 when any selected copy-lane file differs from its live path."""
+    """Return 1 when any selected copy-lane file differs from its live file."""
     drift = 0
     for entry in select_entries(paths):
         if not entry.live.exists():
@@ -184,12 +183,12 @@ def check(paths: list[str]) -> int:
 
 # --- system prompt capture ----------------------------------------------------
 #
-# Claude Code sends its system prompt as a list of text blocks. The per-machine
-# facts (working directory, git status, date) travel in a separate system turn,
-# so the blocks are the same for every session of a given version on a machine
-# with the same integrations. The longest block is the main prompt, the one that
-# `--agent` and `--system-prompt` replace. The capture keeps it verbatim, including
-# sections that exist only because of what this machine has enabled.
+# Claude Code sends its system prompt as a list of text blocks. The facts about
+# this machine (working directory, git status, date) arrive in a separate system
+# turn, so the blocks are the same for every session of one version on a machine
+# with the same integrations. The longest block is the main prompt. `--agent` and
+# `--system-prompt` replace that block and no other. The capture keeps it verbatim,
+# including the sections that exist only because of what this machine has enabled.
 
 STATE_DIR = (
     Path(os.environ.get("XDG_STATE_HOME", "~/.local/state")).expanduser()
@@ -199,9 +198,9 @@ AGENT_PATH = ROOT / ".claude" / "agents" / "default.local.md"
 
 
 class Capture(http.server.BaseHTTPRequestHandler):
-    """Record every request body; answer with an API error so the session stops there."""
+    """Record every request body. Answer with an API error, so the session stops there."""
 
-    bodies: ClassVar[list[bytes]] = []  # reset by capture(); one run per process
+    bodies: ClassVar[list[bytes]] = []  # capture() clears this before each run
 
     def do_POST(self) -> None:
         self.bodies.append(self.rfile.read(int(self.headers.get("content-length", 0))))
@@ -217,7 +216,7 @@ class Capture(http.server.BaseHTTPRequestHandler):
 
 
 def chat_request(bodies: list[bytes]) -> dict[str, object] | None:
-    """The first request that carries a system prompt and tools; earlier ones are probes."""
+    """The first request that carries a system prompt and tools. Earlier requests are probes."""
     for body in bodies:
         if b'"system"' in body and b'"tools"' in body:
             return json.loads(body)
@@ -225,11 +224,11 @@ def chat_request(bodies: list[bytes]) -> dict[str, object] | None:
 
 
 def run_session(base_url: str) -> None:
-    """Drive one interactive claude session through a pty until a chat request is captured."""
+    """Drive one interactive claude session through a pty until the listener holds a chat request."""
     env = dict(
         os.environ,
         ANTHROPIC_BASE_URL=base_url,
-        ENABLE_TOOL_SEARCH="true",  # a custom base URL disables tool search otherwise
+        ENABLE_TOOL_SEARCH="true",  # a custom base URL turns tool search off otherwise
         TERM="xterm-256color",
         COLUMNS="120",
         LINES="40",

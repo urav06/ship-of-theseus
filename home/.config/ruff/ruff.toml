@@ -1,0 +1,7 @@
+# User-level fallback, read only by a file with no project config above it.
+# A project's pyproject.toml, ruff.toml, or .ruff.toml replaces this file entirely.
+# ruff's defaults already enable 400+ rules; turn one off here only after silencing
+# it in a third project, and turn it off in the project first.
+
+[format]
+docstring-code-format = true  # format the code examples inside docstrings too

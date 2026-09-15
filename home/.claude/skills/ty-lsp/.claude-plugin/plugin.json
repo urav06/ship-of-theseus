@@ -1,0 +1,5 @@
+{
+  "name": "ty-lsp",
+  "description": "ty language server for Python, so Claude Code sees type diagnostics after each edit",
+  "version": "0.1.0"
+}

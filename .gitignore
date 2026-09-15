@@ -32,6 +32,11 @@
 !/home/.claude/settings.json
 !/home/.claude/statusline.sh
 !/home/.claude/keybindings.json
+!/home/.claude/skills/
+!/home/.claude/skills/ty-lsp/
+!/home/.claude/skills/ty-lsp/.claude-plugin/
+!/home/.claude/skills/ty-lsp/.claude-plugin/plugin.json
+!/home/.claude/skills/ty-lsp/.lsp.json
 
 # zsh
 !/home/.config/zsh/
@@ -73,6 +78,12 @@
 # ripgrep
 !/home/.config/ripgrep/
 !/home/.config/ripgrep/config
+
+# ruff and ty (user-level fallback; a project's own config replaces these)
+!/home/.config/ruff/
+!/home/.config/ruff/ruff.toml
+!/home/.config/ty/
+!/home/.config/ty/ty.toml
 
 
 # never track (secret fallback path — gh writes oauth_token here if Keychain is unavailable)

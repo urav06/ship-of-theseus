@@ -1,0 +1,6 @@
+# User-level fallback, read only by a file with no project config above it.
+# A project's ty.toml or pyproject.toml [tool.ty] replaces this file entirely.
+# Severities are "ignore", "warn", or "error"; ty's defaults stand until a rule
+# has been silenced in a third project.
+
+[rules]
