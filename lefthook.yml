@@ -3,3 +3,14 @@ pre-commit:
   commands:
     gitleaks:
       run: gitleaks git --pre-commit --staged --redact --verbose
+    # Python is held to the editor's own bar: ruff lint, ruff format, ty types.
+    python:
+      glob: "*.py"
+      run: ruff check {staged_files} && ruff format --check {staged_files} && ty check {staged_files}
+    # A commit must not record a copy-lane file the machine does not run.
+    copy-lane:
+      glob:
+        - "home/**"
+        - "system/**"
+      run: bin/ship.py check {staged_files}
+      fail_text: "copy lane drifts: run the cp that bin/ship.py check printed, then stage again"

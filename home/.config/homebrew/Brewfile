@@ -70,6 +70,8 @@ mas "Xcode", id: 497799835
 # for debugging, tests, and environments, Ruff for lint and format, ty as the
 # language server. Pylance comes with the Python extension and is uninstalled.
 brew "uv"
+brew "ruff"                     # lint and format; the editor extension finds it via the interpreter or PATH
+brew "ty"                       # type check; the editor extension finds it via the interpreter or PATH
 vscode "ms-python.python"
 vscode "ms-python.debugpy"
 vscode "ms-python.vscode-python-envs"
