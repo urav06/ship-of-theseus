@@ -30,6 +30,7 @@ export JUPYTER_RUNTIME_DIR="$XDG_STATE_HOME/jupyter"
 # Cache only — matplotlib bundles config+cache into one dir. Only a font cache
 # lives here; per-project style via plt.rcParams is more reproducible.
 export MPLCONFIGDIR="$XDG_CACHE_HOME/matplotlib"
+export RUFF_CACHE_DIR="$XDG_CACHE_HOME/ruff"   # otherwise ruff writes .ruff_cache/ into every project
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export NPM_CONFIG_CACHE="$XDG_CACHE_HOME/npm"
 export GOPATH="$XDG_DATA_HOME/go"
