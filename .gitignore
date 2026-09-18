@@ -64,6 +64,11 @@
 !/home/Library/Application Support/Code/User/
 !/home/Library/Application Support/Code/User/settings.json
 
+# docker desktop (copy lane: the app rewrites this store, sorted, on every settings change)
+!/home/Library/Group Containers/
+!/home/Library/Group Containers/group.com.docker/
+!/home/Library/Group Containers/group.com.docker/settings-store.json
+
 # homebrew
 !/home/.config/homebrew/
 !/home/.config/homebrew/Brewfile
