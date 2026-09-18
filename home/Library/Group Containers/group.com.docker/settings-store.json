@@ -20,6 +20,11 @@
   "EnableInference": false,
   "EnableIntegrityCheck": true,
   "ExtensionsEnabled": false,
+  "FilesharingDirectories": [
+    "/Users/urav/code",
+    "/private/tmp",
+    "/private/var/folders"
+  ],
   "KubernetesEnabled": false,
   "LastContainerdSnapshotterEnable": 1788684822,
   "LicenseTermsVersion": 2,
