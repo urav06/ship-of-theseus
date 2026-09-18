@@ -68,6 +68,9 @@
 !/home/Library/Group Containers/
 !/home/Library/Group Containers/group.com.docker/
 !/home/Library/Group Containers/group.com.docker/settings-store.json
+# docker engine (copy lane: config.json beside it holds registry tokens and stays excluded)
+!/home/.docker/
+!/home/.docker/daemon.json
 
 # homebrew
 !/home/.config/homebrew/
