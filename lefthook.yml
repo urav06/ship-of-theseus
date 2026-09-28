@@ -3,10 +3,16 @@ pre-commit:
   commands:
     gitleaks:
       run: gitleaks git --pre-commit --staged --redact --verbose
-    # Python is held to the editor's own bar: ruff lint, ruff format, ty types.
-    python:
+    # Python is held to the editor's own bar, plus a ceiling on cognitive complexity.
+    ruff:
       glob: "*.py"
-      run: ruff check {staged_files} && ruff format --check {staged_files} && ty check {staged_files}
+      run: ruff check {staged_files} && ruff format --check {staged_files}
+    ty:
+      glob: "*.py"
+      run: ty check {staged_files}
+    complexity:
+      glob: "*.py"
+      run: uvx complexipy {staged_files}  # a function above complexipy's default ceiling of 15 fails the commit
     # A commit must not record a copy-lane file the machine does not run.
     copy-lane:
       glob:

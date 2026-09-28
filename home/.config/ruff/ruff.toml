@@ -3,5 +3,22 @@
 # ruff's defaults already enable 400+ rules; turn one off here only after silencing
 # it in a third project, and turn it off in the project first.
 
+line-length = 110  # default 88; the formatter wraps here and E501 measures against it
+
+[lint]
+extend-select = [
+    "ERA",     # commented-out code
+    "ARG",     # unused arguments
+    "PGH003",  # a type: ignore must name its rule
+    "PGH004",  # a noqa must name its rule
+    "PERF401", # a comprehension, not a loop that appends to a list
+    "PERF403", # a comprehension, not a loop that fills a dict
+    "SIM110",  # any() or all(), not a loop that searches
+    "RET504",  # return the expression, not a name assigned just before
+    "FBT001",  # booleans are passed by keyword
+    "FBT002",
+    "PTH",     # pathlib, not os.path
+]
+
 [format]
 docstring-code-format = true  # format the code examples inside docstrings too

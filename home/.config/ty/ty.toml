@@ -1,6 +1,7 @@
-# User-level fallback, read only by a file with no project config above it.
-# A project's ty.toml or pyproject.toml [tool.ty] replaces this file entirely.
+# User-level defaults, read for every file, merged under any project config.
+# A project's ty.toml or pyproject.toml [tool.ty] wins only where it sets the same option.
 # Severities are "ignore", "warn", or "error"; ty's defaults stand until a rule
 # has been silenced in a third project.
 
 [rules]
+blanket-ignore-comment = "error"  # a ty: ignore must name its rule

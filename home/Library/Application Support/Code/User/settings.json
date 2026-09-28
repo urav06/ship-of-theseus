@@ -29,6 +29,9 @@
     "editor.cursorBlinking":                            "solid",
     "terminal.integrated.macOptionIsMeta":              true,                  // Option sends Meta, as in Ghostty
     "search.smartCase":                                 true,                  // case-insensitive until the pattern has a capital, as in ripgrep
+    // The Homebrew ruff and ty that Claude Code and the terminal run, even when a project's venv ships its own.
+    "ruff.path":                                        ["/opt/homebrew/bin/ruff"],
+    "ty.path":                                          ["/opt/homebrew/bin/ty"],
     // Native macOS title bar. "never" removes the row VS Code otherwise draws under it.
     "window.titleBarStyle":                             "native",
     "window.customTitleBarVisibility":                  "never",
@@ -53,6 +56,7 @@
     // -- Quiet: less on screen -----------------------------------------------------
     "editor.minimap.enabled":                           false,
     "workbench.tips.enabled":                           false,                 // no shortcut cheatsheet in empty windows
+    "editor.accessibilitySupport":                      "off",                 // screen-reader mode stays off and VS Code stops asking
 
     // -- Feel: motion and reach ----------------------------------------------------
     "editor.cursorSmoothCaretAnimation":                "on",

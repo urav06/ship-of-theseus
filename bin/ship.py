@@ -42,7 +42,7 @@ import time
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import ClassVar
+from typing import ClassVar, override
 
 ROOT = Path(__file__).resolve().parents[1]
 MIRRORS = {"home": Path.home(), "system": Path("/")}
@@ -50,9 +50,7 @@ MIRRORS = {"home": Path.home(), "system": Path("/")}
 
 def git(*args: str) -> bytes:
     """Run git at the repo root and return its stdout. Git prints its own errors to the terminal."""
-    return subprocess.run(
-        ["git", "-C", str(ROOT), *args], check=True, stdout=subprocess.PIPE
-    ).stdout
+    return subprocess.run(["git", "-C", str(ROOT), *args], check=True, stdout=subprocess.PIPE).stdout
 
 
 # --- copy lane ----------------------------------------------------------------
@@ -78,9 +76,7 @@ class Entry:
 def manifest() -> list[Entry]:
     """Every tracked file under a mirror that is not already live."""
     entries: list[Entry] = []
-    for record in git("ls-files", "-z", "-s", "--full-name", "--", *MIRRORS).split(
-        b"\0"
-    ):
+    for record in git("ls-files", "-z", "-s", "--full-name", "--", *MIRRORS).split(b"\0"):
         if not record:
             continue
         meta, rel = record.decode().split("\t", 1)
@@ -106,11 +102,7 @@ def select_entries(paths: list[str]) -> list[Entry]:
             wanted.add(str(resolved.relative_to(ROOT)))
         else:
             print(f"ignored  {p}: outside the repo")
-    selected = [
-        e
-        for e in entries
-        if any(e.rel == w or e.rel.startswith(w + "/") for w in wanted)
-    ]
+    selected = [e for e in entries if any(e.rel == w or e.rel.startswith(w + "/") for w in wanted)]
     if not selected:
         print("nothing to check: no copy-lane file among the given paths")
     return selected
@@ -136,9 +128,7 @@ def show_diff(label_a: str, a: bytes, label_b: str, b: bytes) -> None:
         print(f"  binary files differ: {label_a} {label_b}")
         return
     for line in lines:
-        sys.stdout.write(
-            line if line.endswith("\n") else f"{line}\n\\ No newline at end of file\n"
-        )
+        sys.stdout.write(line if line.endswith("\n") else f"{line}\n\\ No newline at end of file\n")
 
 
 def resolutions(entry: Entry) -> str:
@@ -190,10 +180,7 @@ def check(paths: list[str]) -> int:
 # `--system-prompt` replace that block and no other. The capture keeps it verbatim,
 # including the sections that exist only because of what this machine has enabled.
 
-STATE_DIR = (
-    Path(os.environ.get("XDG_STATE_HOME", "~/.local/state")).expanduser()
-    / "claude-system-prompt"
-)
+STATE_DIR = Path(os.environ.get("XDG_STATE_HOME", "~/.local/state")).expanduser() / "claude-system-prompt"
 AGENT_PATH = ROOT / ".claude" / "agents" / "default.local.md"
 
 
@@ -207,10 +194,9 @@ class Capture(http.server.BaseHTTPRequestHandler):
         self.send_response(500)
         self.send_header("content-type", "application/json")
         self.end_headers()
-        self.wfile.write(
-            b'{"type":"error","error":{"type":"api_error","message":"captured by ship.py"}}'
-        )
+        self.wfile.write(b'{"type":"error","error":{"type":"api_error","message":"captured by ship.py"}}')
 
+    @override
     def log_message(self, format: str, *args: object) -> None:
         return
 
@@ -284,9 +270,7 @@ def capture() -> int:
     STATE_DIR.mkdir(parents=True, exist_ok=True)
     (STATE_DIR / "request.json").write_text(json.dumps(req, indent=2))
     with (STATE_DIR / "system-prompt.md").open("w") as f:
-        f.write(
-            f"# Claude Code system prompt capture\n\nmodel: {req.get('model')}\nclaude: {version}\n"
-        )
+        f.write(f"# Claude Code system prompt capture\n\nmodel: {req.get('model')}\nclaude: {version}\n")
         f.write(f"captured: {today}\nsystem blocks: {len(system)}\ntools: {n_tools}\n")
         for i, block in enumerate(system):
             text = block.get("text", "")
