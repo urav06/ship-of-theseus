@@ -1,25 +1,17 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-settings.json",
-  "attribution": {
-    "commit": "",
-    "pr": "",
-    "sessionUrl": false
-  },
+  "cleanupPeriodDays": 60,
   "env": {
     "DISABLE_TELEMETRY": "1",
     "DISABLE_ERROR_REPORTING": "1",
     "CLAUDE_CODE_DISABLE_FEEDBACK_SURVEY": "1"
   },
-  "model": "claude-fable-5-1[1m]",
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.sh",
-    "refreshInterval": 60
+  "attribution": {
+    "commit": "",
+    "pr": "",
+    "sessionUrl": false
   },
   "permissions": {
-    "ask": [
-      "Bash(git push *)"
-    ],
     "deny": [
       "Read(~/.config/gh/hosts.yml)",
       "Read(~/.claude.json)",
@@ -28,7 +20,16 @@
       "Read(~/.ssh/**)",
       "Read(//**/.env)",
       "Read(//**/.env.*)"
+    ],
+    "ask": [
+      "Bash(git push *)"
     ]
+  },
+  "model": "opus",
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "refreshInterval": 60
   },
   "enabledPlugins": {
     "claudestrophobic@claudestrophobic-marketplace": true,
@@ -53,7 +54,6 @@
   "skipWorkflowUsageWarning": true,
   "autoCompactEnabled": false,
   "switchModelsOnFlag": false,
-  "fileCheckpointingEnabled": false,
-  "cleanupPeriodDays": 60,
-  "autoContinueAtUsageLimit": true
+  "autoContinueAtUsageLimit": true,
+  "fileCheckpointingEnabled": false
 }
