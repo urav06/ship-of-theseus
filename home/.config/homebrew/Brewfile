@@ -32,6 +32,9 @@ brew "ninja"
 brew "nmap"
 brew "cloudflared"
 
+# --- Documents ---------------------------------------------------------------
+brew "poppler"                  # pdfinfo, pdffonts, pdftotext; commonplace intake reads PDFs with them
+
 # --- Device tooling ----------------------------------------------------------
 cask "android-platform-tools"   # adb / fastboot
 cask "displaylink"              # DisplayLink dock driver

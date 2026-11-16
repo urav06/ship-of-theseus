@@ -71,4 +71,5 @@
     "workbench.colorCustomizations": {
         "git.blame.editorDecorationForeground": "#ffffff30" // white at low alpha, so it stays faint on any dark theme
     },
+    "security.promptForLocalFileProtocolHandling": false,
 }

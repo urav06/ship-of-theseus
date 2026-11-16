@@ -26,6 +26,10 @@
     ]
   },
   "model": "opus",
+  "worktree": {
+    "baseRef": "fresh",
+    "bgIsolation": "none"
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline.sh",
@@ -34,13 +38,19 @@
   "enabledPlugins": {
     "claudestrophobic@claudestrophobic-marketplace": true,
     "frontend-design@claude-plugins-official": true,
-    "mattpocock-skills@claude-plugins-official": true
+    "mattpocock-skills@mattpocock": true
   },
   "extraKnownMarketplaces": {
     "claudestrophobic-marketplace": {
       "source": {
         "source": "github",
         "repo": "urav06/claudestrophobic"
+      }
+    },
+    "mattpocock": {
+      "source": {
+        "source": "github",
+        "repo": "mattpocock/skills"
       }
     }
   },

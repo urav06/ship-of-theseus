@@ -37,6 +37,8 @@
 !/home/.claude/skills/ty-lsp/.claude-plugin/
 !/home/.claude/skills/ty-lsp/.claude-plugin/plugin.json
 !/home/.claude/skills/ty-lsp/.lsp.json
+!/home/.claude/skills/orchestrate/
+!/home/.claude/skills/orchestrate/SKILL.md
 
 # zsh
 !/home/.config/zsh/
